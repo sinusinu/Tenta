@@ -21,6 +21,7 @@ namespace Tenta {
         Brush backgroundBrush;
         Brush backgroundEvenBrush;
         Brush selectedBrush;
+        bool shouldSwapPattern = false;
 
         Timer tmrUpdate = new Timer();
         int lastRemainingTime = 0;
@@ -40,6 +41,8 @@ namespace Tenta {
                     }
                 }
             }
+
+            shouldSwapPattern = (otpList.Count % 2 == 0);
 
             var fontName = SystemFonts.MessageBoxFont is not null ? SystemFonts.MessageBoxFont.Name : SystemFonts.DefaultFont.Name;
             fontTitle = new Font(fontName, 10, FontStyle.Bold);
@@ -111,9 +114,9 @@ namespace Tenta {
             if ((e.State & DrawItemState.Focus) == DrawItemState.Focus) {
                 e.Graphics.FillRectangle(selectedBrush, e.Bounds);
             } else if (e.Index % 2 == 0) {
-                e.Graphics.FillRectangle(backgroundEvenBrush, e.Bounds);
+                e.Graphics.FillRectangle(shouldSwapPattern ? backgroundBrush : backgroundEvenBrush, e.Bounds);
             } else {
-                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+                e.Graphics.FillRectangle(shouldSwapPattern ? backgroundEvenBrush : backgroundBrush, e.Bounds);
             }
 
             var code = otp.GeneratePrettifiedCode();
@@ -229,6 +232,7 @@ namespace Tenta {
         }
 
         private void SaveEntries() {
+            shouldSwapPattern = (otpList.Count % 2 == 0);
             lblEmpty.Visible = (otpList.Count == 0);
             var otpListExport = JsonSerializer.Serialize(otpList, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText("otp.json", otpListExport);
