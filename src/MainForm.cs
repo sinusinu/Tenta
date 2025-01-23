@@ -104,6 +104,7 @@ namespace Tenta {
                 lbxOtp.Items.Add(otp);
             }
 
+            lbxOtp.Focus();
             tmrUpdate.Start();
         }
 
