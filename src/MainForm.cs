@@ -111,7 +111,7 @@ namespace Tenta {
             if (e.Index == -1) return;
             var otp = otpList[e.Index];
 
-            if ((e.State & DrawItemState.Focus) == DrawItemState.Focus) {
+            if ((e.State & DrawItemState.Focus) == DrawItemState.Focus && lbxOtp.SelectedIndex == e.Index) {
                 e.Graphics.FillRectangle(selectedBrush, e.Bounds);
             } else if (e.Index % 2 == 0) {
                 e.Graphics.FillRectangle(shouldSwapPattern ? backgroundBrush : backgroundEvenBrush, e.Bounds);
