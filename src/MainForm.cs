@@ -240,9 +240,10 @@ namespace Tenta {
         }
 
         private void tsmAbout_Click(object sender, EventArgs e) {
+            var version = Assembly.GetExecutingAssembly().GetName()!.Version!;
             TaskDialog.ShowDialog(this, new TaskDialogPage() {
                 Caption = "About",
-                Heading = $"Tenta {Assembly.GetExecutingAssembly().GetName()!.Version}",
+                Heading = $"Tenta {version.Major}.{version.Minor}.{version.MajorRevision}",
                 Text = "A WinForms OTP client because why not\n\n© 2025 sinu",
                 Icon = TaskDialogIcon.Information,
                 Buttons = { TaskDialogButton.Close },
