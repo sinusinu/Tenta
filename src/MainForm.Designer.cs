@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             mnuMain = new System.Windows.Forms.MenuStrip();
             tsmManage = new System.Windows.Forms.ToolStripMenuItem();
             tsmAddFromQR = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +66,7 @@
             // 
             // tsmAddFromQR
             // 
+            tsmAddFromQR.Image = (System.Drawing.Image)resources.GetObject("tsmAddFromQR.Image");
             tsmAddFromQR.Name = "tsmAddFromQR";
             tsmAddFromQR.Size = new System.Drawing.Size(192, 22);
             tsmAddFromQR.Text = "From &QR code...";
@@ -72,6 +74,7 @@
             // 
             // tsmAddFromUri
             // 
+            tsmAddFromUri.Image = (System.Drawing.Image)resources.GetObject("tsmAddFromUri.Image");
             tsmAddFromUri.Name = "tsmAddFromUri";
             tsmAddFromUri.Size = new System.Drawing.Size(192, 22);
             tsmAddFromUri.Text = "From &otpauth:// URI...";
@@ -79,6 +82,7 @@
             // 
             // tsmAddManuallyUri
             // 
+            tsmAddManuallyUri.Image = (System.Drawing.Image)resources.GetObject("tsmAddManuallyUri.Image");
             tsmAddManuallyUri.Name = "tsmAddManuallyUri";
             tsmAddManuallyUri.Size = new System.Drawing.Size(192, 22);
             tsmAddManuallyUri.Text = "&Manually...";
@@ -176,6 +180,7 @@
             Controls.Add(lblEmpty);
             Controls.Add(lbxOtp);
             Controls.Add(mnuMain);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = mnuMain;
             MinimumSize = new System.Drawing.Size(300, 0);
             Name = "MainForm";

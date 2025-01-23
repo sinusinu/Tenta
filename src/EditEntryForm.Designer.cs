@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditEntryForm));
             cbxAlgorithm = new System.Windows.Forms.ComboBox();
             btnOK = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
@@ -186,6 +187,7 @@
             Controls.Add(tbxUsername);
             Controls.Add(label1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "EditEntryForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Edit";

@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddManuallyForm));
             label1 = new System.Windows.Forms.Label();
             tbxUsername = new System.Windows.Forms.TextBox();
             tbxIssuer = new System.Windows.Forms.TextBox();
@@ -188,6 +189,7 @@
             Controls.Add(tbxUsername);
             Controls.Add(label1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AddManuallyForm";

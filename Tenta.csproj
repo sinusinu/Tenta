@@ -9,7 +9,12 @@
     <PublishSingleFile>true</PublishSingleFile>
     <NoWarn>$(NoWarn);WFO5001</NoWarn>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <ApplicationIcon>res\icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="res\icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Otp.NET" Version="1.4.0" />

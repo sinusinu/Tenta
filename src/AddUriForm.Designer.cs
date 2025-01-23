@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUriForm));
             tbxUri = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             btnOK = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@
             Controls.Add(tbxUri);
             Controls.Add(label1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AddUriForm";
