@@ -34,6 +34,8 @@
             tsmAddFromQR = new System.Windows.Forms.ToolStripMenuItem();
             tsmAddFromUri = new System.Windows.Forms.ToolStripMenuItem();
             tsmAddManual = new System.Windows.Forms.ToolStripMenuItem();
+            tsmOptions = new System.Windows.Forms.ToolStripMenuItem();
+            tsmLanguage = new System.Windows.Forms.ToolStripMenuItem();
             tsmHelp = new System.Windows.Forms.ToolStripMenuItem();
             tsmAbout = new System.Windows.Forms.ToolStripMenuItem();
             tsmRemainingTime = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +53,7 @@
             // 
             // mnuMain
             // 
-            mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmManage, tsmHelp, tsmRemainingTime });
+            mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmManage, tsmOptions, tsmHelp, tsmRemainingTime });
             mnuMain.Location = new System.Drawing.Point(0, 0);
             mnuMain.Name = "mnuMain";
             mnuMain.Size = new System.Drawing.Size(346, 24);
@@ -91,6 +93,21 @@
             tsmAddManual.Tag = "Main_Menu_Add_Manual";
             tsmAddManual.Text = "&Manually...";
             tsmAddManual.Click += tsmAddManually_Click;
+            // 
+            // tsmOptions
+            // 
+            tsmOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmLanguage });
+            tsmOptions.Name = "tsmOptions";
+            tsmOptions.Size = new System.Drawing.Size(61, 20);
+            tsmOptions.Tag = "Main_Menu_Options";
+            tsmOptions.Text = "&Options";
+            // 
+            // tsmLanguage
+            // 
+            tsmLanguage.Name = "tsmLanguage";
+            tsmLanguage.Size = new System.Drawing.Size(180, 22);
+            tsmLanguage.Tag = "Main_Menu_Options_Language";
+            tsmLanguage.Text = "&Language";
             // 
             // tsmHelp
             // 
@@ -133,12 +150,12 @@
             // 
             cmsOtpEntry.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmMoveUpEntry, tsmMoveDownEntry, toolStripSeparator1, tsmEditEntry, tsmDeleteEntry });
             cmsOtpEntry.Name = "cmsOtpEntry";
-            cmsOtpEntry.Size = new System.Drawing.Size(181, 120);
+            cmsOtpEntry.Size = new System.Drawing.Size(141, 98);
             // 
             // tsmMoveUpEntry
             // 
             tsmMoveUpEntry.Name = "tsmMoveUpEntry";
-            tsmMoveUpEntry.Size = new System.Drawing.Size(180, 22);
+            tsmMoveUpEntry.Size = new System.Drawing.Size(140, 22);
             tsmMoveUpEntry.Tag = "Main_Menu_MoveUp";
             tsmMoveUpEntry.Text = "Move &Up";
             tsmMoveUpEntry.Click += tsmMoveUpEntry_Click;
@@ -146,7 +163,7 @@
             // tsmMoveDownEntry
             // 
             tsmMoveDownEntry.Name = "tsmMoveDownEntry";
-            tsmMoveDownEntry.Size = new System.Drawing.Size(180, 22);
+            tsmMoveDownEntry.Size = new System.Drawing.Size(140, 22);
             tsmMoveDownEntry.Tag = "Main_Menu_MoveDown";
             tsmMoveDownEntry.Text = "Move D&own";
             tsmMoveDownEntry.Click += tsmMoveDownEntry_Click;
@@ -154,12 +171,12 @@
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
             // 
             // tsmEditEntry
             // 
             tsmEditEntry.Name = "tsmEditEntry";
-            tsmEditEntry.Size = new System.Drawing.Size(180, 22);
+            tsmEditEntry.Size = new System.Drawing.Size(140, 22);
             tsmEditEntry.Tag = "Main_Menu_Edit";
             tsmEditEntry.Text = "&Edit...";
             tsmEditEntry.Click += tsmEditEntry_Click;
@@ -167,7 +184,7 @@
             // tsmDeleteEntry
             // 
             tsmDeleteEntry.Name = "tsmDeleteEntry";
-            tsmDeleteEntry.Size = new System.Drawing.Size(180, 22);
+            tsmDeleteEntry.Size = new System.Drawing.Size(140, 22);
             tsmDeleteEntry.Tag = "Main_Menu_Delete";
             tsmDeleteEntry.Text = "&Delete";
             tsmDeleteEntry.Click += tsmDeleteEntry_Click;
@@ -223,5 +240,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmMoveDownEntry;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label lblEmpty;
+        private System.Windows.Forms.ToolStripMenuItem tsmOptions;
+        private System.Windows.Forms.ToolStripMenuItem tsmLanguage;
     }
 }

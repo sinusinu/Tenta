@@ -98,6 +98,8 @@ namespace Tenta {
                 tsmAddFromUri,
                 tsmAddManual,
                 tsmAddFromQR,
+                tsmOptions,
+                tsmLanguage,
                 tsmHelp,
                 tsmAbout,
                 tsmMoveUpEntry,
@@ -113,6 +115,14 @@ namespace Tenta {
             LanguageHandler.Instance.GetTranslatedString("Main_About_Description", ref trAboutDescription);
             LanguageHandler.Instance.GetTranslatedString("Main_About_Translator", ref trAboutTranslator);
             LanguageHandler.Instance.GetTranslatedString("Main_Delete_Confirm", ref trDeleteConfirm);
+
+            tsmLanguage.DropDownItems.Clear();
+            foreach (var lang in LanguageHandler.Instance.LanguageList) {
+                var dingus = tsmLanguage.DropDownItems.Add(lang.Key, null, (sender, e) => {
+                    LanguageHandler.Instance.LoadLanguage(lang.Value);
+                    LoadTranslation();
+                });
+            }
         }
 
         private void UpdateOtp() {

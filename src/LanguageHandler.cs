@@ -18,6 +18,7 @@ namespace Tenta {
         }
 
         private bool loaded = false;
+        public string? currentLanguage = null;
         private Dictionary<string, string> languageList = new Dictionary<string, string>();
         private Dictionary<string, string> languageData = new Dictionary<string, string>();
 
@@ -47,12 +48,14 @@ namespace Tenta {
         }
 
         public void LoadLanguage(string? locale) {
+            if (currentLanguage == locale) return;
             var langFile = Path.Combine("lang", $"{locale}.ini");
             if (!File.Exists(langFile)) {
                 langFile = Path.Combine("lang", "en-US.ini");
                 if (!File.Exists(langFile)) {
                     // default language file is missing, switch to failsafe mode
                     loaded = false;
+                    currentLanguage = null;
                     return;
                 }
             }
@@ -70,6 +73,7 @@ namespace Tenta {
                 languageData.Add(split[0], split[1]);
             }
             loaded = true;
+            currentLanguage = locale;
         }
 
         public bool GetTranslatedString(string key, ref string? target) {
