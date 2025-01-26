@@ -1,22 +1,48 @@
 ﻿using OtpNet;
 using System;
+using System.Net.Sockets;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Tenta {
     public partial class AddManuallyForm : Form {
         public IOTPEntity? otpEntry;
+
+        private string? trErrorMissingRequired = "Username and Secret are required!";
+        private string? trErrorNotNumbers = "Digits and Period must be numbers only!";
+        private string? trErrorInvalidSecret = "Given Secret is invalid!";
 
         public AddManuallyForm() {
             InitializeComponent();
         }
 
         private void AddManuallyForm_Load(object sender, EventArgs e) {
+            LoadTranslation();
+
             cbxAlgorithm.SelectedIndex = 0;
+        }
+
+        private void LoadTranslation() {
+            LanguageHandler.Instance.TranslateControls([
+                this,
+                lblUsername,
+                lblIssuer,
+                lblSecret,
+                lblAlgorithm,
+                lblDigits,
+                lblPeriod,
+                btnOK,
+                btnCancel
+            ]);
+
+            LanguageHandler.Instance.GetTranslatedString("AddManual_Error_MissingRequired", ref trErrorMissingRequired);
+            LanguageHandler.Instance.GetTranslatedString("AddManual_Error_NotNumbers", ref trErrorNotNumbers);
+            LanguageHandler.Instance.GetTranslatedString("AddManual_Error_InvalidSecret", ref trErrorInvalidSecret);
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
             if (tbxUsername.Text.Trim().Length == 0 || tbxSecret.Text.Trim().Length == 0) {
-                MessageBox.Show("Username and Secret are required!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorMissingRequired, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -27,14 +53,14 @@ namespace Tenta {
                 digits = int.Parse(tbxDigits.Text);
                 period = int.Parse(tbxPeriod.Text);
             } catch (Exception) {
-                MessageBox.Show("Digits and Period must be numbers only!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorNotNumbers, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try {
                 Base32Encoding.ToBytes(tbxSecret.Text);
             } catch (Exception) {
-                MessageBox.Show("Given Secret is invalid!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorInvalidSecret, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

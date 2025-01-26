@@ -24,30 +24,31 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddManuallyForm));
-            label1 = new System.Windows.Forms.Label();
+            lblUsername = new System.Windows.Forms.Label();
             tbxUsername = new System.Windows.Forms.TextBox();
             tbxIssuer = new System.Windows.Forms.TextBox();
-            label2 = new System.Windows.Forms.Label();
+            lblIssuer = new System.Windows.Forms.Label();
             tbxSecret = new System.Windows.Forms.TextBox();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
+            lblSecret = new System.Windows.Forms.Label();
+            lblAlgorithm = new System.Windows.Forms.Label();
             tbxDigits = new System.Windows.Forms.TextBox();
-            label5 = new System.Windows.Forms.Label();
+            lblDigits = new System.Windows.Forms.Label();
             tbxPeriod = new System.Windows.Forms.TextBox();
-            label6 = new System.Windows.Forms.Label();
+            lblPeriod = new System.Windows.Forms.Label();
             btnCancel = new System.Windows.Forms.Button();
             btnOK = new System.Windows.Forms.Button();
             cbxAlgorithm = new System.Windows.Forms.ComboBox();
             SuspendLayout();
             // 
-            // label1
+            // lblUsername
             // 
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(74, 23);
-            label1.TabIndex = 0;
-            label1.Text = "Username";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblUsername.Location = new System.Drawing.Point(12, 9);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new System.Drawing.Size(74, 23);
+            lblUsername.TabIndex = 0;
+            lblUsername.Tag = "AddManual_Username";
+            lblUsername.Text = "Username";
+            lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxUsername
             // 
@@ -65,14 +66,15 @@
             tbxIssuer.Size = new System.Drawing.Size(192, 23);
             tbxIssuer.TabIndex = 3;
             // 
-            // label2
+            // lblIssuer
             // 
-            label2.Location = new System.Drawing.Point(12, 38);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(74, 23);
-            label2.TabIndex = 2;
-            label2.Text = "Issuer";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblIssuer.Location = new System.Drawing.Point(12, 38);
+            lblIssuer.Name = "lblIssuer";
+            lblIssuer.Size = new System.Drawing.Size(74, 23);
+            lblIssuer.TabIndex = 2;
+            lblIssuer.Tag = "AddManual_Issuer";
+            lblIssuer.Text = "Issuer";
+            lblIssuer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxSecret
             // 
@@ -82,23 +84,25 @@
             tbxSecret.Size = new System.Drawing.Size(192, 23);
             tbxSecret.TabIndex = 5;
             // 
-            // label3
+            // lblSecret
             // 
-            label3.Location = new System.Drawing.Point(12, 67);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(74, 23);
-            label3.TabIndex = 4;
-            label3.Text = "Secret";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblSecret.Location = new System.Drawing.Point(12, 67);
+            lblSecret.Name = "lblSecret";
+            lblSecret.Size = new System.Drawing.Size(74, 23);
+            lblSecret.TabIndex = 4;
+            lblSecret.Tag = "AddManual_Secret";
+            lblSecret.Text = "Secret";
+            lblSecret.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // lblAlgorithm
             // 
-            label4.Location = new System.Drawing.Point(12, 96);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(74, 23);
-            label4.TabIndex = 6;
-            label4.Text = "Algorithm";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblAlgorithm.Location = new System.Drawing.Point(12, 96);
+            lblAlgorithm.Name = "lblAlgorithm";
+            lblAlgorithm.Size = new System.Drawing.Size(74, 23);
+            lblAlgorithm.TabIndex = 6;
+            lblAlgorithm.Tag = "AddManual_Algorithm";
+            lblAlgorithm.Text = "Algorithm";
+            lblAlgorithm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxDigits
             // 
@@ -109,14 +113,15 @@
             tbxDigits.TabIndex = 9;
             tbxDigits.Text = "6";
             // 
-            // label5
+            // lblDigits
             // 
-            label5.Location = new System.Drawing.Point(12, 125);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(74, 23);
-            label5.TabIndex = 8;
-            label5.Text = "Digits";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblDigits.Location = new System.Drawing.Point(12, 125);
+            lblDigits.Name = "lblDigits";
+            lblDigits.Size = new System.Drawing.Size(74, 23);
+            lblDigits.TabIndex = 8;
+            lblDigits.Tag = "AddManual_Digits";
+            lblDigits.Text = "Digits";
+            lblDigits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxPeriod
             // 
@@ -127,14 +132,15 @@
             tbxPeriod.TabIndex = 11;
             tbxPeriod.Text = "30";
             // 
-            // label6
+            // lblPeriod
             // 
-            label6.Location = new System.Drawing.Point(12, 154);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(74, 23);
-            label6.TabIndex = 10;
-            label6.Text = "Period";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblPeriod.Location = new System.Drawing.Point(12, 154);
+            lblPeriod.Name = "lblPeriod";
+            lblPeriod.Size = new System.Drawing.Size(74, 23);
+            lblPeriod.TabIndex = 10;
+            lblPeriod.Tag = "AddManual_Period";
+            lblPeriod.Text = "Period";
+            lblPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnCancel
             // 
@@ -144,6 +150,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(75, 23);
             btnCancel.TabIndex = 12;
+            btnCancel.Tag = "Common_Cancel";
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -154,6 +161,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(75, 23);
             btnOK.TabIndex = 12;
+            btnOK.Tag = "Common_OK";
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
@@ -178,22 +186,23 @@
             Controls.Add(btnOK);
             Controls.Add(btnCancel);
             Controls.Add(tbxPeriod);
-            Controls.Add(label6);
+            Controls.Add(lblPeriod);
             Controls.Add(tbxDigits);
-            Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(lblDigits);
+            Controls.Add(lblAlgorithm);
             Controls.Add(tbxSecret);
-            Controls.Add(label3);
+            Controls.Add(lblSecret);
             Controls.Add(tbxIssuer);
-            Controls.Add(label2);
+            Controls.Add(lblIssuer);
             Controls.Add(tbxUsername);
-            Controls.Add(label1);
+            Controls.Add(lblUsername);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AddManuallyForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Tag = "AddManual_Title";
             Text = "Add Manually";
             Load += AddManuallyForm_Load;
             ResumeLayout(false);
@@ -202,17 +211,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox tbxUsername;
         private System.Windows.Forms.TextBox tbxIssuer;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblIssuer;
         private System.Windows.Forms.TextBox tbxSecret;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblSecret;
+        private System.Windows.Forms.Label lblAlgorithm;
         private System.Windows.Forms.TextBox tbxDigits;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblDigits;
         private System.Windows.Forms.TextBox tbxPeriod;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPeriod;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ComboBox cbxAlgorithm;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OtpNet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
 using ZXing.Windows.Compatibility;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Tenta {
     public partial class AddQRForm : Form {
@@ -19,13 +21,40 @@ namespace Tenta {
         QRCodeReader qrReader = new QRCodeReader();
         Bitmap? bmImage = null;
 
+        private string? trErrorNoImage = "No vaild image is loaded!";
+        private string? trErrorClipboardEmpty = "No image found on Clipboard!";
+        private string? trErrorNoQRInImage = "No QR code found!";
+        private string? trErrorInvalidQR = "No OTP data found!";
+        private string? trErrorOK = "OK";
+
         public AddQRForm() {
             InitializeComponent();
         }
 
+        private void AddQRForm_Load(object sender, EventArgs e) {
+            LoadTranslation();
+        }
+
+        private void LoadTranslation() {
+            LanguageHandler.Instance.TranslateControls([
+                this,
+                lblSelectImage,
+                btnLoadImageFromFile,
+                btnLoadImageFromClipboard,
+                btnOK,
+                btnCancel,
+            ]);
+
+            LanguageHandler.Instance.GetTranslatedString("AddQR_Error_NoImage", ref trErrorNoImage);
+            LanguageHandler.Instance.GetTranslatedString("AddQR_Error_ClipboardEmpty", ref trErrorClipboardEmpty);
+            LanguageHandler.Instance.GetTranslatedString("AddQR_Error_NoQRInImage", ref trErrorNoQRInImage);
+            LanguageHandler.Instance.GetTranslatedString("AddQR_Error_InvalidQR", ref trErrorInvalidQR);
+            LanguageHandler.Instance.GetTranslatedString("AddQR_OK", ref trErrorOK);
+        }
+
         private void btnOK_Click(object sender, EventArgs e) {
             if (otpEntry is null) {
-                MessageBox.Show("No vaild image is loaded!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorNoImage, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -35,7 +64,7 @@ namespace Tenta {
 
         private void btnLoadImageFromFile_Click(object sender, EventArgs e) {
             if (ofdDialog.ShowDialog() == DialogResult.OK) {
-                pbxImage.Image = Image.FromFile(ofdDialog.FileName);
+                pbxImage.Image = System.Drawing.Image.FromFile(ofdDialog.FileName);
                 if (bmImage != null) bmImage.Dispose();
                 bmImage = new Bitmap(ofdDialog.FileName);
 
@@ -49,7 +78,7 @@ namespace Tenta {
                 if (bmImage != null) bmImage.Dispose();
                 bmImage = new Bitmap(Clipboard.GetImage()!);
             } else {
-                MessageBox.Show("No image found on Clipboard!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorClipboardEmpty, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -61,13 +90,13 @@ namespace Tenta {
 
             var decodeResult = qrReader.decode(new BinaryBitmap(new HybridBinarizer(new BitmapLuminanceSource(bmImage))));
             if (decodeResult is null) {
-                lblError.Text = "No QR code found";
+                lblError.Text = trErrorNoQRInImage;
             } else {
                 otpEntry = DecodeOtpUri(decodeResult.Text);
                 if (otpEntry is null) {
-                    lblError.Text = "No OTP data found";
+                    lblError.Text = trErrorInvalidQR;
                 } else {
-                    lblError.Text = "OK";
+                    lblError.Text = trErrorOK;
                 }
             }
         }

@@ -29,7 +29,7 @@
             pbxImage = new System.Windows.Forms.PictureBox();
             btnLoadImageFromFile = new System.Windows.Forms.Button();
             btnLoadImageFromClipboard = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
+            lblSelectImage = new System.Windows.Forms.Label();
             lblError = new System.Windows.Forms.Label();
             ofdDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pbxImage).BeginInit();
@@ -42,6 +42,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(75, 23);
             btnOK.TabIndex = 13;
+            btnOK.Tag = "Common_OK";
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
@@ -54,6 +55,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(75, 23);
             btnCancel.TabIndex = 14;
+            btnCancel.Tag = "Common_Cancel";
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -74,6 +76,7 @@
             btnLoadImageFromFile.Name = "btnLoadImageFromFile";
             btnLoadImageFromFile.Size = new System.Drawing.Size(117, 23);
             btnLoadImageFromFile.TabIndex = 16;
+            btnLoadImageFromFile.Tag = "AddQR_FromFile";
             btnLoadImageFromFile.Text = "from File";
             btnLoadImageFromFile.UseVisualStyleBackColor = true;
             btnLoadImageFromFile.Click += btnLoadImageFromFile_Click;
@@ -85,18 +88,20 @@
             btnLoadImageFromClipboard.Name = "btnLoadImageFromClipboard";
             btnLoadImageFromClipboard.Size = new System.Drawing.Size(117, 23);
             btnLoadImageFromClipboard.TabIndex = 18;
+            btnLoadImageFromClipboard.Tag = "AddQR_FromClipboard";
             btnLoadImageFromClipboard.Text = "from Clipboard";
             btnLoadImageFromClipboard.UseVisualStyleBackColor = true;
             btnLoadImageFromClipboard.Click += btnLoadImageFromClipboard_Click;
             // 
-            // label1
+            // lblSelectImage
             // 
-            label1.Location = new System.Drawing.Point(250, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(117, 23);
-            label1.TabIndex = 19;
-            label1.Text = "Select an image";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblSelectImage.Location = new System.Drawing.Point(250, 9);
+            lblSelectImage.Name = "lblSelectImage";
+            lblSelectImage.Size = new System.Drawing.Size(117, 23);
+            lblSelectImage.TabIndex = 19;
+            lblSelectImage.Tag = "AddQR_SelectImage";
+            lblSelectImage.Text = "Select an image";
+            lblSelectImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblError
             // 
@@ -117,7 +122,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(379, 288);
             Controls.Add(lblError);
-            Controls.Add(label1);
+            Controls.Add(lblSelectImage);
             Controls.Add(btnLoadImageFromClipboard);
             Controls.Add(btnLoadImageFromFile);
             Controls.Add(pbxImage);
@@ -129,7 +134,9 @@
             MinimizeBox = false;
             Name = "AddQRForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Tag = "AddQR_Title";
             Text = "Add from QR code";
+            Load += AddQRForm_Load;
             ((System.ComponentModel.ISupportInitialize)pbxImage).EndInit();
             ResumeLayout(false);
         }
@@ -141,7 +148,7 @@
         private System.Windows.Forms.PictureBox pbxImage;
         private System.Windows.Forms.Button btnLoadImageFromFile;
         private System.Windows.Forms.Button btnLoadImageFromClipboard;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSelectImage;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.OpenFileDialog ofdDialog;
     }

@@ -54,6 +54,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(75, 23);
             btnOK.TabIndex = 13;
+            btnOK.Tag = "Common_OK";
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
@@ -66,6 +67,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(75, 23);
             btnCancel.TabIndex = 14;
+            btnCancel.Tag = "Common_Cancel";
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +86,9 @@
             MinimizeBox = false;
             Name = "AddUriForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Tag = "AddURI_Title";
             Text = "Add from URI";
+            Load += AddUriForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

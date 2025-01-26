@@ -28,16 +28,16 @@
             btnOK = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
             tbxPeriod = new System.Windows.Forms.TextBox();
-            label6 = new System.Windows.Forms.Label();
             tbxDigits = new System.Windows.Forms.TextBox();
-            label5 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             tbxSecret = new System.Windows.Forms.TextBox();
-            label3 = new System.Windows.Forms.Label();
             tbxIssuer = new System.Windows.Forms.TextBox();
-            label2 = new System.Windows.Forms.Label();
             tbxUsername = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
+            lblPeriod = new System.Windows.Forms.Label();
+            lblDigits = new System.Windows.Forms.Label();
+            lblAlgorithm = new System.Windows.Forms.Label();
+            lblSecret = new System.Windows.Forms.Label();
+            lblIssuer = new System.Windows.Forms.Label();
+            lblUsername = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // cbxAlgorithm
@@ -58,6 +58,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(75, 23);
             btnOK.TabIndex = 25;
+            btnOK.Tag = "Common_OK";
             btnOK.Text = "OK";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
@@ -70,6 +71,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(75, 23);
             btnCancel.TabIndex = 26;
+            btnCancel.Tag = "Common_Cancel";
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -81,15 +83,6 @@
             tbxPeriod.Size = new System.Drawing.Size(192, 23);
             tbxPeriod.TabIndex = 24;
             // 
-            // label6
-            // 
-            label6.Location = new System.Drawing.Point(12, 154);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(74, 23);
-            label6.TabIndex = 23;
-            label6.Text = "Period";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // tbxDigits
             // 
             tbxDigits.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -97,24 +90,6 @@
             tbxDigits.Name = "tbxDigits";
             tbxDigits.Size = new System.Drawing.Size(192, 23);
             tbxDigits.TabIndex = 22;
-            // 
-            // label5
-            // 
-            label5.Location = new System.Drawing.Point(12, 125);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(74, 23);
-            label5.TabIndex = 21;
-            label5.Text = "Digits";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label4
-            // 
-            label4.Location = new System.Drawing.Point(12, 96);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(74, 23);
-            label4.TabIndex = 20;
-            label4.Text = "Algorithm";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxSecret
             // 
@@ -124,15 +99,6 @@
             tbxSecret.Size = new System.Drawing.Size(192, 23);
             tbxSecret.TabIndex = 19;
             // 
-            // label3
-            // 
-            label3.Location = new System.Drawing.Point(12, 67);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(74, 23);
-            label3.TabIndex = 18;
-            label3.Text = "Secret";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // tbxIssuer
             // 
             tbxIssuer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -140,15 +106,6 @@
             tbxIssuer.Name = "tbxIssuer";
             tbxIssuer.Size = new System.Drawing.Size(192, 23);
             tbxIssuer.TabIndex = 17;
-            // 
-            // label2
-            // 
-            label2.Location = new System.Drawing.Point(12, 38);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(74, 23);
-            label2.TabIndex = 16;
-            label2.Text = "Issuer";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbxUsername
             // 
@@ -158,38 +115,90 @@
             tbxUsername.Size = new System.Drawing.Size(192, 23);
             tbxUsername.TabIndex = 15;
             // 
-            // label1
+            // lblPeriod
             // 
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(74, 23);
-            label1.TabIndex = 14;
-            label1.Text = "Username";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblPeriod.Location = new System.Drawing.Point(12, 154);
+            lblPeriod.Name = "lblPeriod";
+            lblPeriod.Size = new System.Drawing.Size(74, 23);
+            lblPeriod.TabIndex = 33;
+            lblPeriod.Tag = "AddManual_Period";
+            lblPeriod.Text = "Period";
+            lblPeriod.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDigits
+            // 
+            lblDigits.Location = new System.Drawing.Point(12, 125);
+            lblDigits.Name = "lblDigits";
+            lblDigits.Size = new System.Drawing.Size(74, 23);
+            lblDigits.TabIndex = 32;
+            lblDigits.Tag = "AddManual_Digits";
+            lblDigits.Text = "Digits";
+            lblDigits.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblAlgorithm
+            // 
+            lblAlgorithm.Location = new System.Drawing.Point(12, 96);
+            lblAlgorithm.Name = "lblAlgorithm";
+            lblAlgorithm.Size = new System.Drawing.Size(74, 23);
+            lblAlgorithm.TabIndex = 31;
+            lblAlgorithm.Tag = "AddManual_Algorithm";
+            lblAlgorithm.Text = "Algorithm";
+            lblAlgorithm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblSecret
+            // 
+            lblSecret.Location = new System.Drawing.Point(12, 67);
+            lblSecret.Name = "lblSecret";
+            lblSecret.Size = new System.Drawing.Size(74, 23);
+            lblSecret.TabIndex = 30;
+            lblSecret.Tag = "AddManual_Secret";
+            lblSecret.Text = "Secret";
+            lblSecret.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblIssuer
+            // 
+            lblIssuer.Location = new System.Drawing.Point(12, 38);
+            lblIssuer.Name = "lblIssuer";
+            lblIssuer.Size = new System.Drawing.Size(74, 23);
+            lblIssuer.TabIndex = 29;
+            lblIssuer.Tag = "AddManual_Issuer";
+            lblIssuer.Text = "Issuer";
+            lblIssuer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblUsername
+            // 
+            lblUsername.Location = new System.Drawing.Point(12, 9);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new System.Drawing.Size(74, 23);
+            lblUsername.TabIndex = 28;
+            lblUsername.Tag = "AddManual_Username";
+            lblUsername.Text = "Username";
+            lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EditEntryForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(296, 225);
+            Controls.Add(lblPeriod);
+            Controls.Add(lblDigits);
+            Controls.Add(lblAlgorithm);
+            Controls.Add(lblSecret);
+            Controls.Add(lblIssuer);
+            Controls.Add(lblUsername);
             Controls.Add(cbxAlgorithm);
             Controls.Add(btnOK);
             Controls.Add(btnCancel);
             Controls.Add(tbxPeriod);
-            Controls.Add(label6);
             Controls.Add(tbxDigits);
-            Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(tbxSecret);
-            Controls.Add(label3);
             Controls.Add(tbxIssuer);
-            Controls.Add(label2);
             Controls.Add(tbxUsername);
-            Controls.Add(label1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "EditEntryForm";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Tag = "Edit_Title";
             Text = "Edit";
             Load += EditEntryForm_Load;
             ResumeLayout(false);
@@ -202,15 +211,15 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox tbxPeriod;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbxDigits;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbxSecret;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbxIssuer;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxUsername;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPeriod;
+        private System.Windows.Forms.Label lblDigits;
+        private System.Windows.Forms.Label lblAlgorithm;
+        private System.Windows.Forms.Label lblSecret;
+        private System.Windows.Forms.Label lblIssuer;
+        private System.Windows.Forms.Label lblUsername;
     }
 }

@@ -28,8 +28,17 @@ namespace Tenta {
         Timer tmrHideCopiedMessage = new Timer();
         bool isShowingCopiedMessage = false;
 
+        string? trRemainingTime = "Remaining Time: {0}";
+        string? trCopied = "Copied!";
+        string? trAbout = "About";
+        string? trAboutDescription = "A WinForms OTP client because why not";
+        string? trAboutTranslator = null;
+        string? trDeleteConfirm = "Delete OTP entry \"{0}\"?";
+
         public MainForm() {
             InitializeComponent();
+
+            LoadTranslation();
 
             if (File.Exists("otp.json")) {
                 using (var otpDataJson = JsonDocument.Parse(File.ReadAllText("otp.json"))) {
@@ -79,6 +88,33 @@ namespace Tenta {
             };
         }
 
+        private void LoadTranslation() {
+            LanguageHandler.Instance.TranslateControls([
+                lblEmpty,
+            ]);
+
+            LanguageHandler.Instance.TranslateControls([
+                tsmManage,
+                tsmAddFromUri,
+                tsmAddManual,
+                tsmAddFromQR,
+                tsmHelp,
+                tsmAbout,
+                tsmMoveUpEntry,
+                tsmMoveDownEntry,
+                tsmEditEntry,
+                tsmDeleteEntry,
+                tsmAbout,
+            ]);
+
+            LanguageHandler.Instance.GetTranslatedString("Main_Menu_RemainingTime", ref trRemainingTime);
+            LanguageHandler.Instance.GetTranslatedString("Main_Menu_Copied", ref trCopied);
+            LanguageHandler.Instance.GetTranslatedString("Main_About", ref trAbout);
+            LanguageHandler.Instance.GetTranslatedString("Main_About_Description", ref trAboutDescription);
+            LanguageHandler.Instance.GetTranslatedString("Main_About_Translator", ref trAboutTranslator);
+            LanguageHandler.Instance.GetTranslatedString("Main_Delete_Confirm", ref trDeleteConfirm);
+        }
+
         private void UpdateOtp() {
             if (otpList.Count == 0) {
                 tsmRemainingTime.Text = "";
@@ -92,7 +128,7 @@ namespace Tenta {
             }
             lastRemainingTime = remainingTime;
 
-            if (!isShowingCopiedMessage) tsmRemainingTime.Text = $"Remaining Time: {remainingTime}";
+            if (!isShowingCopiedMessage) tsmRemainingTime.Text = string.Format(trRemainingTime!, remainingTime);
         }
 
         private void MainForm_Load(object sender, System.EventArgs e) {
@@ -153,7 +189,7 @@ namespace Tenta {
             Clipboard.SetText(otp.GenerateCode());
 
             isShowingCopiedMessage = true;
-            tsmRemainingTime.Text = "Copied!";
+            tsmRemainingTime.Text = trCopied!;
             tmrHideCopiedMessage.Stop();
             tmrHideCopiedMessage.Start();
 
@@ -224,7 +260,7 @@ namespace Tenta {
 
         private void tsmDeleteEntry_Click(object sender, EventArgs e) {
             var targetIndex = lbxOtp.SelectedIndex;
-            if (MessageBox.Show($"Delete OTP entry \"{otpList[targetIndex].PrettyName}\"?", "Tenta", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes) {
+            if (MessageBox.Show(string.Format(trDeleteConfirm!, otpList[targetIndex].PrettyName), "Tenta", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes) {
                 otpList.RemoveAt(targetIndex);
                 SaveEntries();
                 lbxOtp.Items.RemoveAt(targetIndex);
@@ -242,9 +278,9 @@ namespace Tenta {
         private void tsmAbout_Click(object sender, EventArgs e) {
             var version = Assembly.GetExecutingAssembly().GetName()!.Version!;
             TaskDialog.ShowDialog(this, new TaskDialogPage() {
-                Caption = "About",
+                Caption = trAbout,
                 Heading = $"Tenta {version.Major}.{version.Minor}.{version.MajorRevision}",
-                Text = "A WinForms OTP client because why not\n\n© 2025 sinu",
+                Text = (trAboutTranslator is null || trAboutTranslator.Length == 0) ? $"{trAboutDescription}\n\n© 2025 sinu" : $"{trAboutDescription}\n\n{trAboutTranslator}\n\n© 2025 sinu",
                 Icon = TaskDialogIcon.Information,
                 Buttons = { TaskDialogButton.Close },
             });

@@ -6,25 +6,47 @@ namespace Tenta {
     public partial class AddUriForm : Form {
         public IOTPEntity? otpEntry = null;
 
+        private string? trErrorURIEmpty = "URI cannot be empty!";
+        private string? trErrorWrongScheme = "Given URI is invalid! Make sure the URI starts with \"otpauth://\".";
+        private string? trErrorOTPTypeNotSupported = "This type of OTP is not supported yet!";
+        private string? trErrorURIInvalid = "Given URI is invalid!";
+
         public AddUriForm() {
             InitializeComponent();
+        }
+
+        private void AddUriForm_Load(object sender, EventArgs e) {
+            LoadTranslation();
+        }
+
+        private void LoadTranslation() {
+            LanguageHandler.Instance.TranslateControls([
+                this,
+                btnOK,
+                btnCancel,
+            ]);
+
+            LanguageHandler.Instance.GetTranslatedString("AddURI_ErrorURIEmpty", ref trErrorURIEmpty);
+            LanguageHandler.Instance.GetTranslatedString("AddURI_ErrorWrongScheme", ref trErrorWrongScheme);
+            LanguageHandler.Instance.GetTranslatedString("AddURI_ErrorOTPTypeNotSupported", ref trErrorOTPTypeNotSupported);
+            LanguageHandler.Instance.GetTranslatedString("AddURI_ErrorURIInvalid", ref trErrorURIInvalid);
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
             var uri = tbxUri.Text;
 
             if (uri is null || uri.Trim().Length == 0) {
-                MessageBox.Show("URI cannot be empty!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorURIEmpty, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!uri.StartsWith("otpauth://")) {
-                MessageBox.Show("Given URI is invalid! Make sure the URI starts with \"otpauth://\".", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorWrongScheme, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!uri.StartsWith("otpauth://totp/")) {
-                MessageBox.Show("This type of OTP is not supported yet!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorOTPTypeNotSupported, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -54,10 +76,10 @@ namespace Tenta {
                     else if (paramName == "digits") digits = int.Parse(paramValue);
                     else if (paramName == "period") period = int.Parse(paramValue);
                 }
-            } catch (Exception) {}
+            } catch (Exception) { }
 
             if (!valid) {
-                MessageBox.Show("Given URI is invalid!", "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(trErrorURIInvalid, "Tenta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
