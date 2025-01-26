@@ -51,7 +51,7 @@ namespace Tenta {
                 }
             }
 
-            shouldSwapPattern = (otpList.Count % 2 == 0);
+            UpdateDisplayOptions();
 
             var fontName = SystemFonts.MessageBoxFont is not null ? SystemFonts.MessageBoxFont.Name : SystemFonts.DefaultFont.Name;
             fontTitle = new Font(fontName, 10, FontStyle.Bold);
@@ -279,10 +279,14 @@ namespace Tenta {
         }
 
         private void SaveEntries() {
-            shouldSwapPattern = (otpList.Count % 2 == 0);
-            lblEmpty.Visible = (otpList.Count == 0);
+            UpdateDisplayOptions();
             var otpListExport = JsonSerializer.Serialize(otpList, new JsonSerializerOptions() { WriteIndented = true });
             File.WriteAllText("otp.json", otpListExport);
+        }
+
+        private void UpdateDisplayOptions() {
+            shouldSwapPattern = (otpList.Count % 2 == 0);
+            lblEmpty.Visible = (otpList.Count == 0);
         }
 
         private void tsmAbout_Click(object sender, EventArgs e) {
