@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System;
 using System.Media;
 using System.Reflection;
+using System.Globalization;
 
 namespace Tenta {
     public partial class MainForm : Form {
@@ -34,6 +35,7 @@ namespace Tenta {
         string? trAboutDescription = "A WinForms OTP client because why not";
         string? trAboutTranslator = null;
         string? trDeleteConfirm = "Delete OTP entry \"{0}\"?";
+        string? trDefaultLanguage = "System Default";
 
         public MainForm() {
             InitializeComponent();
@@ -115,12 +117,24 @@ namespace Tenta {
             LanguageHandler.Instance.GetTranslatedString("Main_About_Description", ref trAboutDescription);
             LanguageHandler.Instance.GetTranslatedString("Main_About_Translator", ref trAboutTranslator);
             LanguageHandler.Instance.GetTranslatedString("Main_Delete_Confirm", ref trDeleteConfirm);
+            LanguageHandler.Instance.GetTranslatedString("Main_Menu_Options_Language_Default", ref trDefaultLanguage);
 
             tsmLanguage.DropDownItems.Clear();
+            tsmLanguage.DropDownItems.Add(new ToolStripMenuItem(trDefaultLanguage, null, (sender, e) => {
+                ConfigHandler.Instance.ClearValue("Language");
+                LanguageHandler.Instance.LoadLanguageFromConfig();
+                LoadTranslation();
+            }) {
+                Checked = ConfigHandler.Instance.GetString("Language", null) is null,
+            });
+            tsmLanguage.DropDownItems.Add(new ToolStripSeparator());
             foreach (var lang in LanguageHandler.Instance.LanguageList) {
-                var dingus = tsmLanguage.DropDownItems.Add(lang.Key, null, (sender, e) => {
+                var dingus = tsmLanguage.DropDownItems.Add(new ToolStripMenuItem(lang.Key, null, (sender, e) => {
+                    ConfigHandler.Instance.SetString("Language", lang.Value);
                     LanguageHandler.Instance.LoadLanguage(lang.Value);
                     LoadTranslation();
+                }) {
+                    Checked = LanguageHandler.Instance.currentLanguage == lang.Value,
                 });
             }
         }

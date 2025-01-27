@@ -26,7 +26,7 @@ namespace Tenta {
 
         private LanguageHandler() {
             LoadLanguageList();
-            LoadLanguage(CultureInfo.CurrentUICulture.Name);
+            LoadLanguageFromConfig();
         }
 
         private void LoadLanguageList() {
@@ -45,6 +45,11 @@ namespace Tenta {
                     }
                 }
             }
+        }
+
+        public void LoadLanguageFromConfig() {
+            var configLanguage = ConfigHandler.Instance.GetString("Language", null);
+            LoadLanguage(configLanguage ??= CultureInfo.CurrentUICulture.Name);
         }
 
         public void LoadLanguage(string? locale) {
