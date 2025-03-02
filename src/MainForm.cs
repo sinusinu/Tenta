@@ -150,6 +150,7 @@ namespace Tenta {
                 // remaining time has been reset, should update
                 lbxOtp.Invalidate();
             }
+            tsmRemainingTime.ForeColor = (remainingTime <= 5) ? Color.OrangeRed : tsmHelp.ForeColor;
             lastRemainingTime = remainingTime;
 
             if (!isShowingCopiedMessage) tsmRemainingTime.Text = string.Format(trRemainingTime!, remainingTime);

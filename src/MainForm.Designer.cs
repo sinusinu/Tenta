@@ -105,7 +105,7 @@
             // tsmLanguage
             // 
             tsmLanguage.Name = "tsmLanguage";
-            tsmLanguage.Size = new System.Drawing.Size(180, 22);
+            tsmLanguage.Size = new System.Drawing.Size(126, 22);
             tsmLanguage.Tag = "Main_Menu_Options_Language";
             tsmLanguage.Text = "&Language";
             // 
@@ -120,7 +120,7 @@
             // tsmAbout
             // 
             tsmAbout.Name = "tsmAbout";
-            tsmAbout.Size = new System.Drawing.Size(116, 22);
+            tsmAbout.Size = new System.Drawing.Size(180, 22);
             tsmAbout.Tag = "Main_Menu_Help_About";
             tsmAbout.Text = "&About...";
             tsmAbout.Click += tsmAbout_Click;
